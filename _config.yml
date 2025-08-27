@@ -1,5 +1,4 @@
 # Configuration for GitHub Pages
 include:
-- .well-known
-- _redirects
-- _headers
+- index.html
+
