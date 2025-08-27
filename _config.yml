@@ -1,5 +1,3 @@
 # Configuration for GitHub Pages
-include:
-- index.html
-- index_imagineif.html
+theme: minimal
 
