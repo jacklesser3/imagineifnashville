@@ -1,3 +1,4 @@
 # Configuration for GitHub Pages
-theme: minimal
+# Jekyll processing is disabled via .nojekyll file
+# This is a static HTML site
 
