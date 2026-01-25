@@ -1824,22 +1824,92 @@
       justify-content: center;
       align-items: center;
       width: 100%;
+      gap: 16px;
+      padding: 0 10px;
     }
 
-    .video-carousel-player {
+    .video-carousel-track-wrapper {
       width: 100%;
       max-width: 900px;
-      aspect-ratio: 16 / 9;
-      border-radius: 16px;
       overflow: hidden;
+      border-radius: 16px;
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
     }
 
-    .video-carousel-player iframe {
+    .video-carousel-track {
+      display: flex;
+      transition: transform 0.4s ease-out;
+      touch-action: pan-y pinch-zoom;
+    }
+
+    .video-slide {
+      min-width: 100%;
+      aspect-ratio: 16 / 9;
+      flex-shrink: 0;
+    }
+
+    .video-slide iframe {
       width: 100%;
       height: 100%;
       border: none;
       display: block;
+    }
+
+    .carousel-arrow {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--if-white);
+      flex-shrink: 0;
+      backdrop-filter: blur(4px);
+    }
+
+    .carousel-arrow:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.1);
+    }
+
+    .carousel-arrow:active {
+      transform: scale(0.95);
+    }
+
+    .carousel-arrow svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--light-purple);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+
+    .carousel-dot:hover {
+      background: rgba(182, 131, 237, 0.5);
+    }
+
+    .carousel-dot.active {
+      background: var(--light-purple);
+      transform: scale(1.2);
     }
 
     @media (max-width: 768px) {
@@ -1848,8 +1918,40 @@
         margin-bottom: 24px;
       }
 
-      .video-carousel-player {
+      .video-carousel-track-wrapper {
         border-radius: 12px;
+      }
+
+      .carousel-arrow {
+        width: 40px;
+        height: 40px;
+      }
+
+      .carousel-arrow svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .carousel-dots {
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .carousel-dot {
+        width: 10px;
+        height: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .video-carousel-container {
+        gap: 8px;
+        padding: 0 4px;
+      }
+
+      .carousel-arrow {
+        width: 36px;
+        height: 36px;
       }
     }
 
@@ -2763,16 +2865,54 @@
         <h2>Last Year's Highlights</h2>
         <p class="video-carousel-subtitle">Watch sessions from Imagine IF 2025</p>
         <div class="video-carousel-container">
-          <div class="video-carousel-player">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/videoseries?list=PL2L0KLglmktkV95Iv6SAis4DsqoIROzJz"
-              title="Imagine IF 2025 Playlist"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen>
-            </iframe>
+          <button class="carousel-arrow carousel-prev" aria-label="Previous video">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <div class="video-carousel-track-wrapper">
+            <div class="video-carousel-track">
+              <div class="video-slide active" data-video-id="6bbtHYft7t8">
+                <iframe src="https://www.youtube-nocookie.com/embed/6bbtHYft7t8" title="Imagine IF Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-slide" data-video-id="MCU81VGn2Kw">
+                <iframe data-src="https://www.youtube-nocookie.com/embed/MCU81VGn2Kw" title="Imagine IF Video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-slide" data-video-id="NPGF-X1qY44">
+                <iframe data-src="https://www.youtube-nocookie.com/embed/NPGF-X1qY44" title="Imagine IF Video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-slide" data-video-id="ZkYSy5y39cE">
+                <iframe data-src="https://www.youtube-nocookie.com/embed/ZkYSy5y39cE" title="Imagine IF Video 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-slide" data-video-id="JLcRUS-a4_g">
+                <iframe data-src="https://www.youtube-nocookie.com/embed/JLcRUS-a4_g" title="Imagine IF Video 5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-slide" data-video-id="nW_3jppA9nQ">
+                <iframe data-src="https://www.youtube-nocookie.com/embed/nW_3jppA9nQ" title="Imagine IF Video 6" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-slide" data-video-id="V-f8JFhbW4E">
+                <iframe data-src="https://www.youtube-nocookie.com/embed/V-f8JFhbW4E" title="Imagine IF Video 7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="video-slide" data-video-id="kbMfJtEHHLQ">
+                <iframe data-src="https://www.youtube-nocookie.com/embed/kbMfJtEHHLQ" title="Imagine IF Video 8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+            </div>
           </div>
+          <button class="carousel-arrow carousel-next" aria-label="Next video">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+        <div class="carousel-dots">
+          <button class="carousel-dot active" data-index="0" aria-label="Go to video 1"></button>
+          <button class="carousel-dot" data-index="1" aria-label="Go to video 2"></button>
+          <button class="carousel-dot" data-index="2" aria-label="Go to video 3"></button>
+          <button class="carousel-dot" data-index="3" aria-label="Go to video 4"></button>
+          <button class="carousel-dot" data-index="4" aria-label="Go to video 5"></button>
+          <button class="carousel-dot" data-index="5" aria-label="Go to video 6"></button>
+          <button class="carousel-dot" data-index="6" aria-label="Go to video 7"></button>
+          <button class="carousel-dot" data-index="7" aria-label="Go to video 8"></button>
         </div>
       </div>
     </div>
@@ -3350,6 +3490,94 @@
     document.addEventListener('DOMContentLoaded', () => {
       const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .zoom-up');
       animatedElements.forEach(el => observer.observe(el));
+    });
+
+    // Video Carousel functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.querySelector('.video-carousel-track');
+      const slides = document.querySelectorAll('.video-slide');
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+      const dots = document.querySelectorAll('.carousel-dot');
+
+      if (!track || slides.length === 0) return;
+
+      let currentIndex = 0;
+      let startX = 0;
+      let isDragging = false;
+      let currentTranslate = 0;
+      let prevTranslate = 0;
+
+      function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+
+        currentIndex = index;
+        currentTranslate = -index * 100;
+        prevTranslate = currentTranslate;
+        track.style.transform = `translateX(${currentTranslate}%)`;
+
+        // Update active states
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+
+        // Lazy load iframe when slide becomes active
+        const activeSlide = slides[index];
+        const iframe = activeSlide.querySelector('iframe');
+        if (iframe && iframe.dataset.src && !iframe.src) {
+          iframe.src = iframe.dataset.src;
+        }
+      }
+
+      // Arrow navigation
+      prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+      nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+      // Dot navigation
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
+
+      // Touch/swipe support
+      track.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const currentX = e.touches[0].clientX;
+        const diff = currentX - startX;
+        const trackWidth = track.offsetWidth;
+        const percentMove = (diff / trackWidth) * 100;
+        currentTranslate = prevTranslate + percentMove;
+        track.style.transform = `translateX(${currentTranslate}%)`;
+      }, { passive: true });
+
+      track.addEventListener('touchend', (e) => {
+        isDragging = false;
+        const movedBy = currentTranslate - prevTranslate;
+
+        if (movedBy < -10) {
+          goToSlide(currentIndex + 1);
+        } else if (movedBy > 10) {
+          goToSlide(currentIndex - 1);
+        } else {
+          goToSlide(currentIndex);
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        const carouselSection = document.getElementById('last-year');
+        const rect = carouselSection.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInView) {
+          if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
+          if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+        }
+      });
     });
 
     // Smooth navbar background on scroll
