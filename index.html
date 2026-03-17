@@ -3127,7 +3127,7 @@
       name.textContent = speaker.name;
       title.textContent = speaker.title;
       company.textContent = speaker.company;
-      bio.textContent = speaker.bio;
+      bio.innerHTML = speaker.bio;
 
       if (speaker.achievements && speaker.achievements.length > 0) {
         achievements.innerHTML = '<h4>Notable Achievements</h4><ul>' +
